@@ -1,0 +1,1662 @@
+{
+  "address": "GJnVvUgGrUifyiGrs2NDbLdgqxVT5NbRvRhMYqPDMoLB",
+  "metadata": {
+    "name": "workspace",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "claim_reward",
+      "discriminator": [
+        149,
+        95,
+        181,
+        242,
+        94,
+        90,
+        158,
+        162
+      ],
+      "accounts": [
+        {
+          "name": "config",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "config.authority",
+                "account": "Config"
+              }
+            ]
+          }
+        },
+        {
+          "name": "challenge",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  104,
+                  97,
+                  108,
+                  108,
+                  101,
+                  110,
+                  103,
+                  101
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "challenge.id",
+                "account": "Challenge"
+              }
+            ]
+          }
+        },
+        {
+          "name": "vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "challenge.id",
+                "account": "Challenge"
+              }
+            ]
+          }
+        },
+        {
+          "name": "participation",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  97,
+                  114,
+                  116,
+                  105,
+                  99,
+                  105,
+                  112,
+                  97,
+                  116,
+                  105,
+                  111,
+                  110
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "challenge"
+              },
+              {
+                "kind": "account",
+                "path": "user"
+              }
+            ]
+          }
+        },
+        {
+          "name": "profile",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  114,
+                  111,
+                  102,
+                  105,
+                  108,
+                  101
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "user"
+              }
+            ]
+          }
+        },
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "treasury",
+          "writable": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "complete_challenge",
+      "discriminator": [
+        91,
+        147,
+        166,
+        187,
+        72,
+        3,
+        55,
+        209
+      ],
+      "accounts": [
+        {
+          "name": "config",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "authority"
+              }
+            ]
+          }
+        },
+        {
+          "name": "challenge",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  104,
+                  97,
+                  108,
+                  108,
+                  101,
+                  110,
+                  103,
+                  101
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "challenge.id",
+                "account": "Challenge"
+              }
+            ]
+          }
+        },
+        {
+          "name": "authority",
+          "signer": true
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "create_challenge",
+      "discriminator": [
+        170,
+        244,
+        47,
+        1,
+        1,
+        15,
+        173,
+        239
+      ],
+      "accounts": [
+        {
+          "name": "config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "config.authority",
+                "account": "Config"
+              }
+            ]
+          }
+        },
+        {
+          "name": "challenge",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  104,
+                  97,
+                  108,
+                  108,
+                  101,
+                  110,
+                  103,
+                  101
+                ]
+              },
+              {
+                "kind": "arg",
+                "path": "challenge_id"
+              }
+            ]
+          }
+        },
+        {
+          "name": "vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              },
+              {
+                "kind": "arg",
+                "path": "challenge_id"
+              }
+            ]
+          }
+        },
+        {
+          "name": "creator",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "name": "category",
+          "type": "u8"
+        },
+        {
+          "name": "stake_amount",
+          "type": "u64"
+        },
+        {
+          "name": "max_participants",
+          "type": "u16"
+        },
+        {
+          "name": "duration_days",
+          "type": "u16"
+        },
+        {
+          "name": "frequency",
+          "type": "u8"
+        },
+        {
+          "name": "proof_type",
+          "type": "u8"
+        },
+        {
+          "name": "challenge_id",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "expire_challenge",
+      "discriminator": [
+        73,
+        82,
+        20,
+        227,
+        216,
+        66,
+        58,
+        41
+      ],
+      "accounts": [
+        {
+          "name": "challenge",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  104,
+                  97,
+                  108,
+                  108,
+                  101,
+                  110,
+                  103,
+                  101
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "challenge.id",
+                "account": "Challenge"
+              }
+            ]
+          }
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "init_user_profile",
+      "discriminator": [
+        148,
+        35,
+        126,
+        247,
+        28,
+        169,
+        135,
+        175
+      ],
+      "accounts": [
+        {
+          "name": "config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "config.authority",
+                "account": "Config"
+              }
+            ]
+          }
+        },
+        {
+          "name": "profile",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  114,
+                  111,
+                  102,
+                  105,
+                  108,
+                  101
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "user"
+              }
+            ]
+          }
+        },
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "initialize_config",
+      "discriminator": [
+        208,
+        127,
+        21,
+        1,
+        194,
+        190,
+        196,
+        70
+      ],
+      "accounts": [
+        {
+          "name": "config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "authority"
+              }
+            ]
+          }
+        },
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "fee_bps",
+          "type": "u16"
+        },
+        {
+          "name": "treasury",
+          "type": "pubkey"
+        }
+      ]
+    },
+    {
+      "name": "join_challenge",
+      "discriminator": [
+        41,
+        104,
+        214,
+        73,
+        32,
+        168,
+        76,
+        79
+      ],
+      "accounts": [
+        {
+          "name": "config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "config.authority",
+                "account": "Config"
+              }
+            ]
+          }
+        },
+        {
+          "name": "challenge",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  104,
+                  97,
+                  108,
+                  108,
+                  101,
+                  110,
+                  103,
+                  101
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "challenge.id",
+                "account": "Challenge"
+              }
+            ]
+          }
+        },
+        {
+          "name": "vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "challenge.id",
+                "account": "Challenge"
+              }
+            ]
+          }
+        },
+        {
+          "name": "participation",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  97,
+                  114,
+                  116,
+                  105,
+                  99,
+                  105,
+                  112,
+                  97,
+                  116,
+                  105,
+                  111,
+                  110
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "challenge"
+              },
+              {
+                "kind": "account",
+                "path": "user"
+              }
+            ]
+          }
+        },
+        {
+          "name": "profile",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  114,
+                  111,
+                  102,
+                  105,
+                  108,
+                  101
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "user"
+              }
+            ]
+          }
+        },
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "submit_proof",
+      "discriminator": [
+        54,
+        241,
+        46,
+        84,
+        4,
+        212,
+        46,
+        94
+      ],
+      "accounts": [
+        {
+          "name": "challenge",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  104,
+                  97,
+                  108,
+                  108,
+                  101,
+                  110,
+                  103,
+                  101
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "challenge.id",
+                "account": "Challenge"
+              }
+            ]
+          }
+        },
+        {
+          "name": "participation",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  97,
+                  114,
+                  116,
+                  105,
+                  99,
+                  105,
+                  112,
+                  97,
+                  116,
+                  105,
+                  111,
+                  110
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "challenge"
+              },
+              {
+                "kind": "account",
+                "path": "user"
+              }
+            ]
+          }
+        },
+        {
+          "name": "proof_record",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  114,
+                  111,
+                  111,
+                  102
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "participation"
+              },
+              {
+                "kind": "account",
+                "path": "participation.proofs_submitted",
+                "account": "Participation"
+              }
+            ]
+          }
+        },
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "proof_hash",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
+          }
+        },
+        {
+          "name": "proof_type",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "verify_proof",
+      "discriminator": [
+        217,
+        211,
+        191,
+        110,
+        144,
+        13,
+        186,
+        98
+      ],
+      "accounts": [
+        {
+          "name": "config",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "authority"
+              }
+            ]
+          }
+        },
+        {
+          "name": "challenge",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  104,
+                  97,
+                  108,
+                  108,
+                  101,
+                  110,
+                  103,
+                  101
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "challenge.id",
+                "account": "Challenge"
+              }
+            ]
+          }
+        },
+        {
+          "name": "participation",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  97,
+                  114,
+                  116,
+                  105,
+                  99,
+                  105,
+                  112,
+                  97,
+                  116,
+                  105,
+                  111,
+                  110
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "challenge"
+              },
+              {
+                "kind": "account",
+                "path": "participation.user",
+                "account": "Participation"
+              }
+            ]
+          }
+        },
+        {
+          "name": "proof_record",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  114,
+                  111,
+                  111,
+                  102
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "participation"
+              },
+              {
+                "kind": "arg",
+                "path": "proof_index"
+              }
+            ]
+          }
+        },
+        {
+          "name": "profile",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  114,
+                  111,
+                  102,
+                  105,
+                  108,
+                  101
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "participation.user",
+                "account": "Participation"
+              }
+            ]
+          }
+        },
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        }
+      ],
+      "args": [
+        {
+          "name": "_proof_index",
+          "type": "u16"
+        },
+        {
+          "name": "verified",
+          "type": "bool"
+        },
+        {
+          "name": "confidence_score",
+          "type": "u8"
+        },
+        {
+          "name": "ai_summary_hash",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Challenge",
+      "discriminator": [
+        119,
+        250,
+        161,
+        121,
+        119,
+        81,
+        22,
+        208
+      ]
+    },
+    {
+      "name": "Config",
+      "discriminator": [
+        155,
+        12,
+        170,
+        224,
+        30,
+        250,
+        204,
+        130
+      ]
+    },
+    {
+      "name": "Participation",
+      "discriminator": [
+        237,
+        154,
+        142,
+        46,
+        143,
+        63,
+        189,
+        18
+      ]
+    },
+    {
+      "name": "ProofRecord",
+      "discriminator": [
+        237,
+        59,
+        155,
+        172,
+        204,
+        117,
+        87,
+        44
+      ]
+    },
+    {
+      "name": "UserProfile",
+      "discriminator": [
+        32,
+        37,
+        119,
+        205,
+        179,
+        180,
+        13,
+        194
+      ]
+    },
+    {
+      "name": "Vault",
+      "discriminator": [
+        211,
+        8,
+        232,
+        43,
+        2,
+        152,
+        117,
+        119
+      ]
+    }
+  ],
+  "events": [
+    {
+      "name": "ChallengeCreated",
+      "discriminator": [
+        166,
+        178,
+        174,
+        178,
+        11,
+        172,
+        98,
+        243
+      ]
+    },
+    {
+      "name": "ChallengeExpired",
+      "discriminator": [
+        8,
+        175,
+        9,
+        64,
+        0,
+        48,
+        124,
+        120
+      ]
+    },
+    {
+      "name": "ChallengeJoined",
+      "discriminator": [
+        254,
+        42,
+        73,
+        56,
+        99,
+        74,
+        6,
+        15
+      ]
+    },
+    {
+      "name": "ProofSubmitted",
+      "discriminator": [
+        160,
+        51,
+        85,
+        70,
+        249,
+        89,
+        5,
+        139
+      ]
+    },
+    {
+      "name": "ProofVerified",
+      "discriminator": [
+        181,
+        54,
+        148,
+        211,
+        237,
+        73,
+        131,
+        232
+      ]
+    },
+    {
+      "name": "RewardClaimed",
+      "discriminator": [
+        49,
+        28,
+        87,
+        84,
+        158,
+        48,
+        229,
+        175
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "ChallengeNotActive",
+      "msg": "Challenge is not active"
+    },
+    {
+      "code": 6001,
+      "name": "ChallengeFull",
+      "msg": "Challenge is full"
+    },
+    {
+      "code": 6002,
+      "name": "AlreadyJoined",
+      "msg": "Already joined this challenge"
+    },
+    {
+      "code": 6003,
+      "name": "NotParticipant",
+      "msg": "Not a participant in this challenge"
+    },
+    {
+      "code": 6004,
+      "name": "ProofTooEarly",
+      "msg": "Proof submitted too early based on frequency"
+    },
+    {
+      "code": 6005,
+      "name": "ChallengeNotEnded",
+      "msg": "Challenge has not ended yet"
+    },
+    {
+      "code": 6006,
+      "name": "AlreadyClaimed",
+      "msg": "Reward already claimed"
+    },
+    {
+      "code": 6007,
+      "name": "Unauthorized",
+      "msg": "Unauthorized access"
+    },
+    {
+      "code": 6008,
+      "name": "InvalidCategory",
+      "msg": "Invalid category"
+    },
+    {
+      "code": 6009,
+      "name": "InvalidStakeAmount",
+      "msg": "Invalid stake amount"
+    },
+    {
+      "code": 6010,
+      "name": "OverflowError",
+      "msg": "Arithmetic overflow"
+    },
+    {
+      "code": 6011,
+      "name": "InvalidParameter",
+      "msg": "Invalid parameter"
+    },
+    {
+      "code": 6012,
+      "name": "ConfigInactive",
+      "msg": "Config is inactive"
+    }
+  ],
+  "types": [
+    {
+      "name": "Challenge",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "id",
+            "type": "u64"
+          },
+          {
+            "name": "creator",
+            "type": "pubkey"
+          },
+          {
+            "name": "title",
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "type": "string"
+          },
+          {
+            "name": "category",
+            "type": "u8"
+          },
+          {
+            "name": "stake_amount",
+            "type": "u64"
+          },
+          {
+            "name": "max_participants",
+            "type": "u16"
+          },
+          {
+            "name": "current_participants",
+            "type": "u16"
+          },
+          {
+            "name": "duration_days",
+            "type": "u16"
+          },
+          {
+            "name": "frequency",
+            "type": "u8"
+          },
+          {
+            "name": "proof_type",
+            "type": "u8"
+          },
+          {
+            "name": "total_pool",
+            "type": "u64"
+          },
+          {
+            "name": "start_time",
+            "type": "i64"
+          },
+          {
+            "name": "end_time",
+            "type": "i64"
+          },
+          {
+            "name": "status",
+            "type": "u8"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ChallengeCreated",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "challenge_id",
+            "type": "u64"
+          },
+          {
+            "name": "creator",
+            "type": "pubkey"
+          },
+          {
+            "name": "stake_amount",
+            "type": "u64"
+          },
+          {
+            "name": "max_participants",
+            "type": "u16"
+          },
+          {
+            "name": "duration_days",
+            "type": "u16"
+          },
+          {
+            "name": "vault",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ChallengeExpired",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "challenge_id",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ChallengeJoined",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "challenge_id",
+            "type": "u64"
+          },
+          {
+            "name": "user",
+            "type": "pubkey"
+          },
+          {
+            "name": "stake_amount",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Config",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "bump",
+            "type": "u8"
+          },
+          {
+            "name": "authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "treasury",
+            "type": "pubkey"
+          },
+          {
+            "name": "fee_bps",
+            "type": "u16"
+          },
+          {
+            "name": "total_challenges",
+            "type": "u64"
+          },
+          {
+            "name": "total_users",
+            "type": "u64"
+          },
+          {
+            "name": "total_staked",
+            "type": "u64"
+          },
+          {
+            "name": "is_active",
+            "type": "bool"
+          },
+          {
+            "name": "is_paused",
+            "type": "bool"
+          },
+          {
+            "name": "version",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Participation",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "user",
+            "type": "pubkey"
+          },
+          {
+            "name": "challenge",
+            "type": "pubkey"
+          },
+          {
+            "name": "staked_amount",
+            "type": "u64"
+          },
+          {
+            "name": "proofs_submitted",
+            "type": "u16"
+          },
+          {
+            "name": "proofs_verified",
+            "type": "u16"
+          },
+          {
+            "name": "joined_at",
+            "type": "i64"
+          },
+          {
+            "name": "last_proof_at",
+            "type": "i64"
+          },
+          {
+            "name": "completed",
+            "type": "bool"
+          },
+          {
+            "name": "claimed",
+            "type": "bool"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ProofRecord",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "participation",
+            "type": "pubkey"
+          },
+          {
+            "name": "proof_index",
+            "type": "u16"
+          },
+          {
+            "name": "proof_type",
+            "type": "u8"
+          },
+          {
+            "name": "proof_hash",
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          },
+          {
+            "name": "submitted_at",
+            "type": "i64"
+          },
+          {
+            "name": "verified",
+            "type": "bool"
+          },
+          {
+            "name": "confidence_score",
+            "type": "u8"
+          },
+          {
+            "name": "ai_summary_hash",
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ProofSubmitted",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "challenge_id",
+            "type": "u64"
+          },
+          {
+            "name": "user",
+            "type": "pubkey"
+          },
+          {
+            "name": "proof_index",
+            "type": "u16"
+          },
+          {
+            "name": "proof_hash",
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "ProofVerified",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "challenge_id",
+            "type": "u64"
+          },
+          {
+            "name": "user",
+            "type": "pubkey"
+          },
+          {
+            "name": "proof_index",
+            "type": "u16"
+          },
+          {
+            "name": "verified",
+            "type": "bool"
+          },
+          {
+            "name": "confidence_score",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "RewardClaimed",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "challenge_id",
+            "type": "u64"
+          },
+          {
+            "name": "user",
+            "type": "pubkey"
+          },
+          {
+            "name": "reward",
+            "type": "u64"
+          },
+          {
+            "name": "fee",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "UserProfile",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "user",
+            "type": "pubkey"
+          },
+          {
+            "name": "reputation",
+            "type": "u64"
+          },
+          {
+            "name": "current_streak",
+            "type": "u16"
+          },
+          {
+            "name": "best_streak",
+            "type": "u16"
+          },
+          {
+            "name": "challenges_joined",
+            "type": "u32"
+          },
+          {
+            "name": "challenges_won",
+            "type": "u32"
+          },
+          {
+            "name": "total_staked",
+            "type": "u64"
+          },
+          {
+            "name": "total_earned",
+            "type": "u64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Vault",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "challenge_id",
+            "type": "u64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    }
+  ]
+}
