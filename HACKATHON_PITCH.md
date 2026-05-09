@@ -1,5 +1,5 @@
 # 🏺 ProofJar: The AI-Powered Accountability Protocol
-**Solana Hackathon Submission | DEV3 Standard**
+**Solana Hackathon Submission**
 
 ## 💡 The Problem
 Self-improvement is a $10B industry, yet 92% of New Year's resolutions fail. The primary reason? **Lack of immediate consequence.** Social accountability (telling a friend) is weak because friends are too kind. Financial accountability (betting money) is hard to automate and trust.
@@ -23,7 +23,7 @@ ProofJar moves beyond simple timestamp checks. By integrating AI agents directly
 ### 2. High-Performance Solana Vaults
 Utilizing Solana's sub-second finality and low fees, ProofJar creates instant micro-escrows. Each challenge is its own program-derived address (PDA), ensuring users always maintain custody of their funds until the challenge conditions are met.
 
-### 3. DEV3 Premium UX
+### 3. Premium UX
 Privacy and complexity are hidden behind a "DeFi-for-Humans" interface.
 *   **Plena Wallet Integration**: Seamless onboarding for non-crypto natives.
 *   **Mobile-First Design**: Built for the "on-the-go" nature of accountability.
@@ -40,7 +40,7 @@ Privacy and complexity are hidden behind a "DeFi-for-Humans" interface.
 
 ---
 
-## 💎 Why It Wins
+## 💎 Why
 1.  **Massive Market**: Taps into the productivity and wellness boom.
 2.  **Real-World Impact**: Solves a human problem (procrastination) using high-tech tools.
 3.  **Innovative AI Usage**: One of the first protocols to use AI agents as autonomous "Oracles" for real-world proof-of-work.
