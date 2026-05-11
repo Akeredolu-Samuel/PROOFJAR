@@ -11,6 +11,8 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ChallengeCard from '@/components/ChallengeCard';
 import { MOCK_USER, MOCK_CHALLENGES } from '@/lib/constants';
+import { useCustomChallenges } from '@/lib/useCustomChallenges';
+import { Trash2, Edit2 } from 'lucide-react';
 
 const statCards = [
   { label: 'Reputation', value: MOCK_USER.reputation, icon: BarChart3, suffix: 'pts', trend: '+12%' },
@@ -20,7 +22,8 @@ const statCards = [
 ];
 
 const Dashboard: React.FC = () => {
-  const { connected } = useWallet();
+  const { connected, publicKey } = useWallet();
+  const { customChallenges, deleteChallenge, editChallenge } = useCustomChallenges();
 
   if (!connected) {
     return (
@@ -116,6 +119,47 @@ const Dashboard: React.FC = () => {
                   <p className="text-xs text-muted-foreground">Start your next accountability goal</p>
                 </Link>
               </div>
+
+              {/* My Created Challenges */}
+              {customChallenges.length > 0 && (
+                <div className="mt-8">
+                  <div className="flex items-center justify-between mb-4">
+                    <h2 className="text-lg font-bold text-foreground">My Created Challenges</h2>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {customChallenges.map((challenge) => (
+                      <div key={challenge.id} className="relative group">
+                        <ChallengeCard challenge={challenge} compact />
+                        <div className="absolute top-3 right-3 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity z-10 bg-background/80 backdrop-blur px-2 py-1 rounded-lg">
+                          <button
+                            onClick={(e) => {
+                              e.preventDefault();
+                              const newTitle = window.prompt("Enter new title for challenge:", challenge.title);
+                              if (newTitle) editChallenge(challenge.id, { title: newTitle });
+                            }}
+                            className="p-1.5 text-blue-400 hover:bg-blue-400/20 rounded-md transition-colors"
+                            title="Edit Title"
+                          >
+                            <Edit2 className="w-4 h-4" />
+                          </button>
+                          <button
+                            onClick={(e) => {
+                              e.preventDefault();
+                              if (window.confirm("Are you sure you want to delete this challenge?")) {
+                                deleteChallenge(challenge.id);
+                              }
+                            }}
+                            className="p-1.5 text-red-400 hover:bg-red-400/20 rounded-md transition-colors"
+                            title="Delete Challenge"
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Quick Stats Panel */}

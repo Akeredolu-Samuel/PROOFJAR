@@ -15,7 +15,8 @@ import {
 import { Link, useNavigate } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { CHALLENGE_CATEGORIES, PROOF_TYPES } from '@/lib/constants';
+import { CHALLENGE_CATEGORIES, PROOF_TYPES, Challenge } from '@/lib/constants';
+import { useCustomChallenges } from '@/lib/useCustomChallenges';
 
 // ProofJar devnet escrow vault
 const PROOFJAR_VAULT = new PublicKey('7UX2i7SucgLMQcfZ75s3VXmZZY4YRUyJN9X1RgfMoDUi');
@@ -173,6 +174,7 @@ const CreateChallenge: React.FC = () => {
   const { connected, publicKey, sendTransaction } = useWallet();
   const { connection } = useConnection();
   const navigate = useNavigate();
+  const { addChallenge } = useCustomChallenges();
 
   const [step, setStep] = useState(1);
   const [isCreating, setIsCreating] = useState(false);
@@ -236,6 +238,28 @@ const CreateChallenge: React.FC = () => {
         ...form,
         txSignature: sig,
       });
+
+      // Save to local storage
+      const newChallenge: Challenge = {
+        id: jarId,
+        title: form.title,
+        description: form.description,
+        category: form.category,
+        stakeAmount: parseFloat(form.stakeAmount),
+        participants: 1, // Start with 1 participant (the creator)
+        maxParticipants: parseInt(form.maxParticipants),
+        duration: parseInt(form.duration),
+        frequency: form.frequency,
+        proofType: form.proofType,
+        creator: publicKey.toString(),
+        createdAt: new Date().toISOString(),
+        endsAt: new Date(Date.now() + parseInt(form.duration) * 24 * 60 * 60 * 1000).toISOString(),
+        status: 'active',
+        totalPool: parseFloat(form.stakeAmount), // Initial pool is creator's stake
+        completionRate: 0,
+      };
+      addChallenge(newChallenge);
+
       setStep(4);
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : 'Transaction failed. Please try again.';
