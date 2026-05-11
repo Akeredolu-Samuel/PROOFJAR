@@ -1,12 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MOCK_STATS } from '@/lib/constants';
 
 const stats = [
-  { label: 'Total SOL Staked', value: MOCK_STATS.totalStaked.toLocaleString(), suffix: 'SOL' },
-  { label: 'Active Challenges', value: MOCK_STATS.activeChallenges.toLocaleString(), suffix: '' },
-  { label: 'Proofs Verified', value: MOCK_STATS.proofsVerified.toLocaleString(), suffix: '' },
-  { label: 'Total Users', value: MOCK_STATS.totalUsers.toLocaleString(), suffix: '' },
+  { value: '12,847', suffix: ' SOL', label: 'Total Locked in Vaults', sub: '≈ $1.8M at current price' },
+  { value: '1,243', suffix: '', label: 'Active Jars', sub: 'Across 8 categories' },
+  { value: '48,291', suffix: '', label: 'Proofs Verified by AI', sub: '94.2% accuracy rate' },
+  { value: '8,712', suffix: '', label: 'Accountable Users', sub: 'Avg 3.1x goal completion' },
 ];
 
 const StatsSection: React.FC = () => {
@@ -22,13 +21,14 @@ const StatsSection: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="text-center p-6 rounded-2xl glass-card"
+              className="text-center p-6 rounded-2xl glass-card hover:-translate-y-1 transition-transform duration-300"
             >
               <p className="text-3xl sm:text-4xl font-black text-foreground stat-glow mb-1">
                 {stat.value}
-                {stat.suffix && <span className="text-lg text-primary ml-1">{stat.suffix}</span>}
+                {stat.suffix && <span className="text-lg text-primary ml-0.5">{stat.suffix}</span>}
               </p>
-              <p className="text-sm text-muted-foreground">{stat.label}</p>
+              <p className="text-sm font-semibold text-foreground/80 mb-1">{stat.label}</p>
+              <p className="text-[11px] text-muted-foreground">{stat.sub}</p>
             </motion.div>
           ))}
         </div>
